@@ -8,7 +8,6 @@ public abstract class FileCard
     }
     
     public string Description { get; set; } = string.Empty;
-
     public string Path { get; protected set; }
     public abstract string Extension { get; }
 
