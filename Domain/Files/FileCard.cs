@@ -5,10 +5,16 @@ namespace FileCards.Domain;
 public class FileCard
 {
     public static readonly string[] AllowedExtensions = { ".txt", ".docx", ".pdf" };
+    public const int MaxDescriptionLength = 500;
 
     public FileCard(string name, string description)
     {
         Name = ValidateExtension(name);
+        if (description.Length > MaxDescriptionLength)
+        {
+            throw ValidationException.DescriptionTooLong();
+        }
+        
         Description = description;
     }
     
