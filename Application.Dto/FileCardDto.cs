@@ -2,5 +2,5 @@
 
 public record FileCardDto(string Name, string Description)
 {
-    public DateTime LastEditTime { get; set; }
+    public DateTime? LastEditTime { get; set; }
 }
