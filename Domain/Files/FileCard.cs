@@ -1,19 +1,20 @@
 ﻿namespace FileCards.Domain;
 
-public abstract class FileCard
+public class FileCard
 {
-    protected FileCard(string path)
+    public static readonly string[] AllowedExtensions = { "txt", "docx", "pdf" };
+
+    public FileCard(string path)
     {
         Path = ValidateExtension(path);
     }
     
     public string Description { get; set; } = string.Empty;
-    public string Path { get; protected set; }
-    public abstract string Extension { get; }
+    public string Path { get; private set; }
 
-    private string ValidateExtension(string path)
+    private static string ValidateExtension(string path)
     {
-        if (System.IO.Path.GetExtension(path) == Extension)
+        if (AllowedExtensions.Contains(System.IO.Path.GetExtension(path)))
         {
             return path;
         }
