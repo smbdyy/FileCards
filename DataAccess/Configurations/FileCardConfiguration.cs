@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace FileCards.DataAccess.Configurations;
 
-public class FileCardConfiguration : IEntityTypeConfiguration<FileCard>
+internal class FileCardConfiguration : IEntityTypeConfiguration<FileCard>
 {
     public void Configure(EntityTypeBuilder<FileCard> builder)
     {
