@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FileCards.DataAccess;
 
-public class FileCardsDbContext : DbContext
+internal class FileCardsDbContext : DbContext
 {
     public DbSet<FileCard> FileCards { get; protected set; } = null!;
     
