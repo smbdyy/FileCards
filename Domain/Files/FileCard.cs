@@ -2,21 +2,21 @@
 
 public class FileCard
 {
-    public static readonly string[] AllowedExtensions = { "txt", "docx", "pdf" };
+    public static readonly string[] AllowedExtensions = { ".txt", ".docx", ".pdf" };
 
-    public FileCard(string path)
+    public FileCard(string name)
     {
-        Path = ValidateExtension(path);
+        Name = ValidateExtension(name);
     }
     
     public string Description { get; set; } = string.Empty;
-    public string Path { get; private set; }
+    public string Name { get; private set; }
 
-    private static string ValidateExtension(string path)
+    private static string ValidateExtension(string name)
     {
-        if (AllowedExtensions.Contains(System.IO.Path.GetExtension(path)))
+        if (AllowedExtensions.Contains(Path.GetExtension(name)))
         {
-            return path;
+            return name;
         }
 
         throw new NotImplementedException();
