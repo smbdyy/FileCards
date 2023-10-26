@@ -1,9 +1,10 @@
-﻿using FileCards.Domain;
+﻿using FileCards.Application.Abstractions.DataAccess;
+using FileCards.Domain;
 using Microsoft.EntityFrameworkCore;
 
 namespace FileCards.DataAccess;
 
-internal class FileCardsDbContext : DbContext
+internal class FileCardsDbContext : DbContext, IFileCardsDbContext
 {
     public DbSet<FileCard> FileCards { get; protected set; } = null!;
     
