@@ -1,5 +1,4 @@
-﻿using FileCards.DataAccess.Configurations;
-using FileCards.Domain;
+﻿using FileCards.Domain;
 using Microsoft.EntityFrameworkCore;
 
 namespace FileCards.DataAccess;
