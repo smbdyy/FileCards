@@ -25,4 +25,10 @@ public static class StorageManager
         var info = new FileInfo(Path.Combine(_storagePath, file.Name));
         return info.LastWriteTime;
     }
+
+    public static void AddFileToStorage(string sourceFilePath)
+    {
+        var name = Path.GetFileName(sourceFilePath);
+        File.Move(sourceFilePath, Path.Combine(_storagePath, name));
+    }
 }
