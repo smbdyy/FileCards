@@ -31,4 +31,9 @@ internal static class StorageManager
         var name = Path.GetFileName(sourceFilePath);
         File.Move(sourceFilePath, Path.Combine(_storagePath, name));
     }
+
+    public static bool StorageContainsFile(string filename)
+    {
+        return File.Exists(Path.Combine(_storagePath, filename));
+    }
 }
