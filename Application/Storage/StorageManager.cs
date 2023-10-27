@@ -2,7 +2,7 @@
 
 namespace FileCards.Application.Storage;
 
-public static class StorageManager
+internal static class StorageManager
 {
     private static string _storagePath = "\\storage";
 
