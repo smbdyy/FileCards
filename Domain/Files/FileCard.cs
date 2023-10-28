@@ -30,6 +30,12 @@ public class FileCard
     }
     public string Name { get; private set; }
 
+    public void Rename(string newName)
+    {
+        string extension = Path.GetExtension(Name);
+        Name = newName + extension;
+    }
+
     private static string ValidateExtension(string name)
     {
         if (AllowedExtensions.Contains(Path.GetExtension(name)))
