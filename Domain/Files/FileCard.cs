@@ -4,7 +4,7 @@ namespace FileCards.Domain;
 
 public class FileCard
 {
-    public static readonly string[] AllowedExtensions = { ".txt", ".docx", ".pdf" };
+    public static string[] AllowedExtensions = { ".txt", ".docx", ".pdf" };
     public const int MaxDescriptionLength = 500;
 
     private string _description = null!;
