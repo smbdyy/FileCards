@@ -1,4 +1,5 @@
 ﻿using FileCards.Application.Abstractions.DataAccess;
+using FileCards.Application.Exceptions;
 using FileCards.Application.Storage;
 using FileCards.Domain;
 using MediatR;
@@ -22,12 +23,12 @@ internal class AddNewFileHandler : IRequestHandler<Request>
 
         if (_context.FileCards.Any(file => file.Name == filename))
         {
-            throw new NotImplementedException();
+            throw AlreadyExistsException.FileInDb(filename);
         }
 
         if (StorageManager.StorageContainsFile(filename))
         {
-            throw new NotImplementedException();
+            throw AlreadyExistsException.FileInStorage(filename);
         }
 
         StorageManager.AddFileToStorage(request.Filepath);

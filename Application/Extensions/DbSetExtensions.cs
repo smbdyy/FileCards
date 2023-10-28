@@ -1,4 +1,5 @@
-﻿using FileCards.Domain;
+﻿using FileCards.Application.Exceptions;
+using FileCards.Domain;
 using Microsoft.EntityFrameworkCore;
 
 namespace FileCards.Application.Extensions;
@@ -14,7 +15,7 @@ internal static class DbSetExtensions
 
         if (card == null)
         {
-            throw new NotImplementedException();
+            throw NotFoundException.FileInDb(filename);
         }
 
         return card;
