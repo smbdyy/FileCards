@@ -29,7 +29,7 @@ internal static class StorageManager
     public static void AddFileToStorage(string sourceFilePath)
     {
         var filename = Path.GetFileName(sourceFilePath);
-        File.Move(sourceFilePath, Path.Combine(_storagePath, filename));
+        File.Copy(sourceFilePath, Path.Combine(_storagePath, filename));
     }
 
     public static bool StorageContainsFile(string filename)
@@ -40,5 +40,10 @@ internal static class StorageManager
     public static void DeleteFromStorage(this FileCard file)
     {
         File.Delete(Path.Combine(_storagePath, file.Name));
+    }
+
+    public static void RenameInStorage(this FileCard file, string newName)
+    {
+        File.Move(file.Name, newName);
     }
 }
