@@ -30,6 +30,8 @@ internal class AddNewFileHandler : IRequestHandler<Request>
             throw new NotImplementedException();
         }
 
+        StorageManager.AddFileToStorage(request.Filepath);
+        
         var fileCard = new FileCard(filename, request.Description);
         _context.FileCards.Add(fileCard);
         await _context.SaveChangesAsync(cancellationToken);
