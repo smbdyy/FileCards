@@ -28,12 +28,17 @@ internal static class StorageManager
 
     public static void AddFileToStorage(string sourceFilePath)
     {
-        var name = Path.GetFileName(sourceFilePath);
-        File.Move(sourceFilePath, Path.Combine(_storagePath, name));
+        var filename = Path.GetFileName(sourceFilePath);
+        File.Move(sourceFilePath, Path.Combine(_storagePath, filename));
     }
 
     public static bool StorageContainsFile(string filename)
     {
         return File.Exists(Path.Combine(_storagePath, filename));
+    }
+
+    public static void DeleteFromStorage(this FileCard file)
+    {
+        File.Delete(Path.Combine(_storagePath, file.Name));
     }
 }
