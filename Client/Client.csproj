@@ -12,6 +12,18 @@
       <Compile Update="Forms\MainForm.cs">
         <SubType>Form</SubType>
       </Compile>
+      <Compile Update="Forms\ErrorMessage.cs">
+        <SubType>Form</SubType>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MediatR" Version="12.1.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Application.Contracts\Application.Contracts.csproj" />
+      <ProjectReference Include="..\Application\Application.csproj" />
     </ItemGroup>
 
 </Project>
