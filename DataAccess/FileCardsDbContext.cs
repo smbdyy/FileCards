@@ -6,6 +6,11 @@ namespace FileCards.DataAccess;
 
 internal class FileCardsDbContext : DbContext, IFileCardsDbContext
 {
+    public FileCardsDbContext()
+    {
+        Database.EnsureCreated();
+    }
+    
     public DbSet<FileCard> FileCards { get; protected set; } = null!;
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
