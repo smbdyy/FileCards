@@ -36,6 +36,7 @@ partial class MainForm
         _addFileButton.TabIndex = 0;
         _addFileButton.Text = "Добавить файл";
         _addFileButton.UseVisualStyleBackColor = true;
+        _addFileButton.Click += AddFileButtonClicked;
         // 
         // _filesDataGrid
         // 

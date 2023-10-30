@@ -1,5 +1,4 @@
-﻿using System.Windows.Forms;
-using Application.Contracts;
+﻿using Application.Contracts;
 using MediatR;
 
 namespace Client.Forms;
@@ -18,6 +17,7 @@ public partial class MainForm : Form
     {
         var response = await _mediator.Send(new GetAllFiles.Request());
         var fileCards = response.Files;
+        // TODO
     }
 
     private async void AddFileButtonClicked(object sender, EventArgs e)
@@ -25,8 +25,14 @@ public partial class MainForm : Form
         using var dialog = CreateFilePickingDialog();
         if (dialog.ShowDialog() != DialogResult.OK) return;
 
-        var filepath = dialog.FileName;
-        
+        try
+        {
+            await _mediator.Send(new AddNewFile.Request(dialog.FileName, string.Empty));
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage.ShowWithMessage(ex.Message);
+        }
     }
 
     private static OpenFileDialog CreateFilePickingDialog()
