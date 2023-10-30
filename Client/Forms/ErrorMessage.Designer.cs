@@ -4,15 +4,8 @@ namespace Client.Forms;
 
 partial class ErrorMessage
 {
-    /// <summary>
-    /// Required designer variable.
-    /// </summary>
     private IContainer components = null;
 
-    /// <summary>
-    /// Clean up any resources being used.
-    /// </summary>
-    /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
     protected override void Dispose(bool disposing)
     {
         if (disposing && (components != null))
@@ -23,19 +16,35 @@ partial class ErrorMessage
         base.Dispose(disposing);
     }
 
-    #region Windows Form Designer generated code
-
-    /// <summary>
-    /// Required method for Designer support - do not modify
-    /// the contents of this method with the code editor.
-    /// </summary>
     private void InitializeComponent()
     {
-        this.components = new System.ComponentModel.Container();
-        this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        this.ClientSize = new System.Drawing.Size(800, 450);
-        this.Text = "ErrorMessage";
+        _message = new Label();
+        SuspendLayout();
+        //
+        // _message
+        //
+        _message.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(204)));
+        _message.Location = new Point(48, 54);
+        _message.Name = "_message";
+        _message.Size = new Size(283, 139);
+        _message.TabIndex = 0;
+        _message.Text = "sdfsadf";
+        _message.TextAlign = ContentAlignment.MiddleCenter;
+        //
+        // Ошибка
+        //
+        AutoScaleDimensions = new SizeF(8F, 16F);
+        AutoScaleMode = AutoScaleMode.Font;
+        ClientSize = new Size(385, 246);
+        Controls.Add(_message);
+        MaximizeBox = false;
+        MinimizeBox = false;
+        Name = "Ошибка";
+        Text = "Ошибка";
+        TopMost = true;
+        FormBorderStyle = FormBorderStyle.FixedSingle;
+        ResumeLayout(false);
     }
 
-    #endregion
+    private Label _message;
 }

@@ -1,11 +1,10 @@
-﻿using System.Windows.Forms;
-
-namespace Client.Forms;
+﻿namespace Client.Forms;
 
 public partial class ErrorMessage : Form
 {
-    public ErrorMessage()
+    public ErrorMessage(string message)
     {
         InitializeComponent();
+        _message.Text = message;
     }
 }
