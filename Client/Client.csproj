@@ -19,11 +19,14 @@
 
     <ItemGroup>
       <PackageReference Include="MediatR" Version="12.1.1" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="7.0.13" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.13" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Application.Contracts\Application.Contracts.csproj" />
       <ProjectReference Include="..\Application\Application.csproj" />
+      <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
     </ItemGroup>
 
 </Project>

@@ -6,7 +6,7 @@ namespace FileCards.DataAccess;
 
 internal class FileCardsDbContext : DbContext, IFileCardsDbContext
 {
-    public FileCardsDbContext()
+    public FileCardsDbContext(DbContextOptions<FileCardsDbContext> options) : base(options)
     {
         Database.EnsureCreated();
     }
