@@ -68,7 +68,7 @@ partial class MainForm
         // 
         AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
         AutoScaleMode = AutoScaleMode.Font;
-        ClientSize = new System.Drawing.Size(392, 476);
+        ClientSize = new System.Drawing.Size(370, 476);
         Controls.Add(_filesDataGrid);
         Controls.Add(_addFileButton);
         FormBorderStyle = FormBorderStyle.FixedSingle;
