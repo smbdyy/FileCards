@@ -44,8 +44,8 @@ partial class MainForm
         _filesDataGrid.Location = new System.Drawing.Point(13, 82);
         _filesDataGrid.Name = "_filesDataGrid";
         _filesDataGrid.ReadOnly = true;
-        _filesDataGrid.RowTemplate.Height = 24;
-        _filesDataGrid.Size = new System.Drawing.Size(340, 367);
+        _filesDataGrid.RowTemplate.Height = 30;
+        _filesDataGrid.Size = new System.Drawing.Size(360, 367);
         _filesDataGrid.TabIndex = 1;
         _filesDataGrid.AutoGenerateColumns = false;
         _filesDataGrid.RowHeadersVisible = false;
@@ -56,19 +56,19 @@ partial class MainForm
         filenameColumn.Width = 217;
         _filesDataGrid.Columns.Add(filenameColumn);
 
-        var editButtonColumn = new DataGridViewButtonColumn();
-        editButtonColumn.HeaderText = string.Empty;
-        editButtonColumn.Text = "Редактировать";
-        editButtonColumn.UseColumnTextForButtonValue = true;
-        editButtonColumn.Resizable = DataGridViewTriState.False;
-        editButtonColumn.Width = 120;
-        _filesDataGrid.Columns.Add(editButtonColumn);
+        var openButtonColumn = new DataGridViewButtonColumn();
+        openButtonColumn.HeaderText = string.Empty;
+        openButtonColumn.Text = "Открыть карточку";
+        openButtonColumn.UseColumnTextForButtonValue = true;
+        openButtonColumn.Resizable = DataGridViewTriState.False;
+        openButtonColumn.Width = 140;
+        _filesDataGrid.Columns.Add(openButtonColumn);
         // 
         // Form
         // 
         AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
         AutoScaleMode = AutoScaleMode.Font;
-        ClientSize = new System.Drawing.Size(370, 476);
+        ClientSize = new System.Drawing.Size(390, 476);
         Controls.Add(_filesDataGrid);
         Controls.Add(_addFileButton);
         FormBorderStyle = FormBorderStyle.FixedSingle;
