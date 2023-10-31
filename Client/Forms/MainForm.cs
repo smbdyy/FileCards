@@ -32,6 +32,8 @@ public partial class MainForm : Form
         try
         {
             await _mediator.Send(new AddNewFile.Request(dialog.FileName, string.Empty));
+            var filename = Path.GetFileName(dialog.FileName);
+            _filesDataGrid.Rows.Add(filename);
         }
         catch (Exception ex)
         {
