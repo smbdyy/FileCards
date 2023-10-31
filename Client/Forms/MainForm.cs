@@ -17,7 +17,11 @@ public partial class MainForm : Form
     {
         var response = await _mediator.Send(new GetAllFiles.Request());
         var fileCards = response.Files;
-        // TODO
+
+        foreach (var card in fileCards)
+        {
+            _filesDataGrid.Rows.Add(card.Name);
+        }
     }
 
     private async void AddFileButtonClicked(object sender, EventArgs e)

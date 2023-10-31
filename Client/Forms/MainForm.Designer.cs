@@ -16,7 +16,6 @@ partial class MainForm
         base.Dispose(disposing);
     }
     
-    private VScrollBar _filesGridScrollBar;
     private DataGridView _filesDataGrid;
     private Button _addFileButton;
     
@@ -24,7 +23,6 @@ partial class MainForm
     {
         _addFileButton = new Button();
         _filesDataGrid = new DataGridView();
-        _filesGridScrollBar = new VScrollBar();
         ((System.ComponentModel.ISupportInitialize)(_filesDataGrid)).BeginInit();
         SuspendLayout();
         // 
@@ -47,24 +45,33 @@ partial class MainForm
         _filesDataGrid.Name = "_filesDataGrid";
         _filesDataGrid.ReadOnly = true;
         _filesDataGrid.RowTemplate.Height = 24;
-        _filesDataGrid.Size = new System.Drawing.Size(336, 367);
+        _filesDataGrid.Size = new System.Drawing.Size(340, 367);
         _filesDataGrid.TabIndex = 1;
-        // 
-        // _filesGridScrollBar
-        // 
-        _filesGridScrollBar.Location = new System.Drawing.Point(352, 82);
-        _filesGridScrollBar.Name = "_filesGridScrollBar";
-        _filesGridScrollBar.Size = new System.Drawing.Size(23, 367);
-        _filesGridScrollBar.TabIndex = 2;
+        _filesDataGrid.AutoGenerateColumns = false;
+        _filesDataGrid.RowHeadersVisible = false;
+
+        var filenameColumn = new DataGridViewTextBoxColumn();
+        filenameColumn.HeaderText = "Имя файла";
+        filenameColumn.Resizable = DataGridViewTriState.False;
+        filenameColumn.Width = 217;
+        _filesDataGrid.Columns.Add(filenameColumn);
+
+        var editButtonColumn = new DataGridViewButtonColumn();
+        editButtonColumn.HeaderText = string.Empty;
+        editButtonColumn.Text = "Редактировать";
+        editButtonColumn.UseColumnTextForButtonValue = true;
+        editButtonColumn.Resizable = DataGridViewTriState.False;
+        editButtonColumn.Width = 120;
+        _filesDataGrid.Columns.Add(editButtonColumn);
         // 
         // Form
         // 
         AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new System.Drawing.Size(392, 476);
-        Controls.Add(_filesGridScrollBar);
         Controls.Add(_filesDataGrid);
         Controls.Add(_addFileButton);
+        FormBorderStyle = FormBorderStyle.FixedSingle;
         Name = "MainForm";
         Text = "FileCards";
         Load += FormLoaded;
