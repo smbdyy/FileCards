@@ -31,7 +31,7 @@ partial class ErrorMessage
         _message.Text = "sdfsadf";
         _message.TextAlign = ContentAlignment.MiddleCenter;
         //
-        // Ошибка
+        // Form
         //
         AutoScaleDimensions = new SizeF(8F, 16F);
         AutoScaleMode = AutoScaleMode.Font;
