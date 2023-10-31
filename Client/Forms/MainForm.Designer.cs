@@ -69,12 +69,15 @@ partial class MainForm
         AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new System.Drawing.Size(390, 476);
-        Controls.Add(_filesDataGrid);
-        Controls.Add(_addFileButton);
         FormBorderStyle = FormBorderStyle.FixedSingle;
+        MinimizeBox = false;
+        MaximizeBox = false;
         Name = "MainForm";
         Text = "FileCards";
         Load += FormLoaded;
+        
+        Controls.Add(_filesDataGrid);
+        Controls.Add(_addFileButton);
 
         ((System.ComponentModel.ISupportInitialize)(_filesDataGrid)).EndInit();
         ResumeLayout(false);
