@@ -96,13 +96,14 @@ partial class FileCardForm
         // 
         AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
         AutoScaleMode = AutoScaleMode.Font;
-        ClientSize = new System.Drawing.Size(307, 486);
+        ClientSize = new System.Drawing.Size(307, 516);
         Controls.Add(_descriptionLabel);
         Controls.Add(_saveChangesButton);
         Controls.Add(_lastEditTimeLabel);
         Controls.Add(_descriptionTextBox);
         Controls.Add(_extensionLabel);
         Controls.Add(_filenameTextBox);
+        Controls.Add(_deleteCardButton);
         MaximizeBox = false;
         MinimizeBox = false;
         Name = "FileCardForm";

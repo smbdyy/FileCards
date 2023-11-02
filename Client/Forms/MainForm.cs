@@ -53,4 +53,16 @@ public partial class MainForm : Form
 
         return dialog;
     }
+
+    private async void FilesDataGridCellClicked(object sender, DataGridViewCellEventArgs e)
+    {
+        if (e.ColumnIndex == _openButtonColumn.Index && e.RowIndex >= 0)
+        {
+            var filename = _filesDataGrid.Rows[e.RowIndex].Cells["Filename"].Value.ToString() ?? string.Empty;
+            var response = await _mediator.Send(new GetFileByName.Request(filename));
+
+            var fileCardForm = new FileCardForm(response.File);
+            fileCardForm.ShowDialog();
+        }
+    }
 }

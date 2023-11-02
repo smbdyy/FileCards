@@ -18,6 +18,7 @@ partial class MainForm
     
     private DataGridView _filesDataGrid;
     private Button _addFileButton;
+    private DataGridViewButtonColumn _openButtonColumn;
     
     private void InitializeComponent()
     {
@@ -49,20 +50,22 @@ partial class MainForm
         _filesDataGrid.TabIndex = 1;
         _filesDataGrid.AutoGenerateColumns = false;
         _filesDataGrid.RowHeadersVisible = false;
+        _filesDataGrid.CellContentClick += FilesDataGridCellClicked;
 
         var filenameColumn = new DataGridViewTextBoxColumn();
         filenameColumn.HeaderText = "Имя файла";
+        filenameColumn.Name = "Filename";
         filenameColumn.Resizable = DataGridViewTriState.False;
         filenameColumn.Width = 217;
         _filesDataGrid.Columns.Add(filenameColumn);
 
-        var openButtonColumn = new DataGridViewButtonColumn();
-        openButtonColumn.HeaderText = string.Empty;
-        openButtonColumn.Text = "Открыть карточку";
-        openButtonColumn.UseColumnTextForButtonValue = true;
-        openButtonColumn.Resizable = DataGridViewTriState.False;
-        openButtonColumn.Width = 140;
-        _filesDataGrid.Columns.Add(openButtonColumn);
+        _openButtonColumn = new DataGridViewButtonColumn();
+        _openButtonColumn.HeaderText = string.Empty;
+        _openButtonColumn.Text = "Открыть карточку";
+        _openButtonColumn.UseColumnTextForButtonValue = true;
+        _openButtonColumn.Resizable = DataGridViewTriState.False;
+        _openButtonColumn.Width = 140;
+        _filesDataGrid.Columns.Add(_openButtonColumn);
         // 
         // Form
         // 
