@@ -64,7 +64,7 @@ public partial class MainForm : Form
 
             var fileCardForm = new FileCardForm(response.File, _mediator);
             fileCardForm.ShowDialog();
-            cell.Value = fileCardForm.NewName;
+            cell.Value = fileCardForm.CurrentName;
         }
     }
 }
