@@ -6,12 +6,11 @@ namespace FileCards.Application.Extensions;
 
 internal static class DbSetExtensions
 {
-    public static async Task<FileCard> GetByFilenameAsync(
+    public static FileCard GetByFilename(
         this DbSet<FileCard> fileCards,
-        string filename,
-        CancellationToken cancellationToken)
+        string filename)
     {
-        var card = await fileCards.FindAsync(new object[] { filename }, cancellationToken);
+        var card = fileCards.SingleOrDefault(x => x.Name == filename);
 
         if (card == null)
         {

@@ -19,7 +19,7 @@ internal class RenameFileHandler : IRequestHandler<Request>
     
     public async Task Handle(Request request, CancellationToken cancellationToken)
     {
-        var fileCard = await _context.FileCards.GetByFilenameAsync(request.Filename, cancellationToken);
+        var fileCard = _context.FileCards.GetByFilename(request.Filename);
         string extension = Path.GetExtension(fileCard.Name);
         string newName = request.NewFilename + extension;
         
@@ -32,11 +32,14 @@ internal class RenameFileHandler : IRequestHandler<Request>
         {
             throw AlreadyExistsException.FileInStorage(newName);
         }
-        
-        fileCard.Rename(newName);
-        fileCard.RenameInStorage(newName);
 
-        _context.FileCards.Update(fileCard);
+        _context.FileCards.Remove(fileCard);
+        await _context.SaveChangesAsync(cancellationToken);
+        
+        fileCard.RenameInStorage(newName);
+        fileCard.Rename(request.NewFilename);
+
+        _context.FileCards.Add(fileCard);
         await _context.SaveChangesAsync(cancellationToken);
     }
 }

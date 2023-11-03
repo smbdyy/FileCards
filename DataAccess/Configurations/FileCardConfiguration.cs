@@ -8,7 +8,11 @@ internal class FileCardConfiguration : IEntityTypeConfiguration<FileCard>
 {
     public void Configure(EntityTypeBuilder<FileCard> builder)
     {
-        builder.HasKey(x => x.Name);
+        builder.HasKey(x => x.Id);
+        
+        builder
+            .Property(x => x.Name)
+            .IsRequired();
 
         builder
             .Property(x => x.Description)

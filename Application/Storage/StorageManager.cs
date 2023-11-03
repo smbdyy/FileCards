@@ -44,6 +44,6 @@ internal static class StorageManager
 
     public static void RenameInStorage(this FileCard file, string newName)
     {
-        File.Move(file.Name, newName);
+        File.Move(Path.Combine(_storagePath, file.Name), Path.Combine(_storagePath, newName));
     }
 }

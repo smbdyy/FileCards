@@ -18,7 +18,7 @@ internal class DeleteFileHandler : IRequestHandler<Request>
     
     public async Task Handle(Request request, CancellationToken cancellationToken)
     {
-        var fileCard = await _context.FileCards.GetByFilenameAsync(request.Filename, cancellationToken);
+        var fileCard = _context.FileCards.GetByFilename(request.Filename);
         
         fileCard.DeleteFromStorage();
         _context.FileCards.Remove(fileCard);

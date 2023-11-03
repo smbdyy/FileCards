@@ -57,6 +57,7 @@ partial class FileCardForm
         _descriptionTextBox.Name = "_descriptionTextBox";
         _descriptionTextBox.Size = new System.Drawing.Size(267, 275);
         _descriptionTextBox.TabIndex = 2;
+        _descriptionTextBox.MaxLength = 500;
         // 
         // _lastEditTimeLabel
         // 
@@ -74,6 +75,7 @@ partial class FileCardForm
         _saveChangesButton.TabIndex = 4;
         _saveChangesButton.Text = "Сохранить";
         _saveChangesButton.UseVisualStyleBackColor = true;
+        _saveChangesButton.Click += SaveChangesButtonClicked;
         // 
         // _descriptionLabel
         // 

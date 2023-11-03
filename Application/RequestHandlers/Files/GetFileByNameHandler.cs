@@ -16,10 +16,10 @@ internal class GetFileByNameHandler : IRequestHandler<Request, Response>
         _context = context;
     }
     
-    public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
+    public Task<Response> Handle(Request request, CancellationToken cancellationToken)
     {
-        var fileCard = await _context.FileCards.GetByFilenameAsync(request.Filename, cancellationToken);
+        var fileCard = _context.FileCards.GetByFilename(request.Filename);
 
-        return new Response(fileCard.AsDto());
+        return Task.FromResult(new Response(fileCard.AsDto()));
     }
 }

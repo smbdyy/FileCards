@@ -61,7 +61,7 @@ public partial class MainForm : Form
             var filename = _filesDataGrid.Rows[e.RowIndex].Cells["Filename"].Value.ToString() ?? string.Empty;
             var response = await _mediator.Send(new GetFileByName.Request(filename));
 
-            var fileCardForm = new FileCardForm(response.File);
+            var fileCardForm = new FileCardForm(response.File, _mediator);
             fileCardForm.ShowDialog();
         }
     }

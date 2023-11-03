@@ -17,7 +17,7 @@ internal class ChangeFileDescriptionHandler : IRequestHandler<Request>
     
     public async Task Handle(Request request, CancellationToken cancellationToken)
     {
-        var fileCard = await _context.FileCards.GetByFilenameAsync(request.Filename, cancellationToken);
+        var fileCard = _context.FileCards.GetByFilename(request.Filename);
 
         fileCard.Description = request.NewDescription;
         _context.FileCards.Update(fileCard);

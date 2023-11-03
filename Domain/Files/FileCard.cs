@@ -9,11 +9,14 @@ public class FileCard
 
     private string _description = null!;
 
-    public FileCard(string name, string description)
+    public FileCard(Guid id, string name, string description)
     {
+        Id = id;
         Name = ValidateExtension(name);
         Description = description;
     }
+    
+    public Guid Id { get; }
     
     public string Description
     {
