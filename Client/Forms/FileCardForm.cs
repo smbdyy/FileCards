@@ -13,9 +13,12 @@ public partial class FileCardForm : Form
     {
         _fileCard = fileCard;
         _mediator = mediator;
+        NewName = _fileCard.Name;
         InitializeComponent();
         FillValues();
     }
+    
+    public string NewName { get; private set; }
 
     private void FillValues()
     {
@@ -38,6 +41,8 @@ public partial class FileCardForm : Form
         try
         {
             await _mediator.Send(new RenameFile.Request(_fileCard.Name, newName));
+            NewName = newName + Path.GetExtension(_fileCard.Name);
+            Close();
         }
         catch (Exception ex)
         {

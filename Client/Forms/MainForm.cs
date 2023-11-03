@@ -58,11 +58,13 @@ public partial class MainForm : Form
     {
         if (e.ColumnIndex == _openButtonColumn.Index && e.RowIndex >= 0)
         {
-            var filename = _filesDataGrid.Rows[e.RowIndex].Cells["Filename"].Value.ToString() ?? string.Empty;
+            var cell = _filesDataGrid.Rows[e.RowIndex].Cells["Filename"];
+            var filename = cell.Value.ToString() ?? string.Empty;
             var response = await _mediator.Send(new GetFileByName.Request(filename));
 
             var fileCardForm = new FileCardForm(response.File, _mediator);
             fileCardForm.ShowDialog();
+            cell.Value = fileCardForm.NewName;
         }
     }
 }
