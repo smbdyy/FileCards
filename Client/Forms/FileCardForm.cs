@@ -28,52 +28,41 @@ public partial class FileCardForm : Form
         _lastEditTimeLabel.Text = $"Время последнего изменения:\n{_fileCard.LastEditTime}";
     }
 
+    private async void DeleteCardButtonClicked(object sender, EventArgs e)
+    {
+        
+    }
+
     private async void SaveChangesButtonClicked(object sender, EventArgs e)
     {
-        var errorOccured = false;
-        
-        if (_filenameTextBox.Text != Path.GetFileNameWithoutExtension(_fileCard.Name))
+        try
         {
-            errorOccured = await RenameFileAsync(_filenameTextBox.Text);
-        }
+            if (_filenameTextBox.Text != Path.GetFileNameWithoutExtension(_fileCard.Name))
+            {
+                await RenameFileAsync(_filenameTextBox.Text);
+            }
 
-        if (_descriptionTextBox.Text != _fileCard.Description)
-        {
-            errorOccured = await ChangeDescriptionAsync(_descriptionTextBox.Text);
-        }
-
-        if (!errorOccured)
-        {
+            if (_descriptionTextBox.Text != _fileCard.Description)
+            {
+                await ChangeDescriptionAsync(_descriptionTextBox.Text);
+            }
+            
             Close();
         }
-    }
-
-    private async Task<bool> RenameFileAsync(string newName)
-    {
-        try
-        {
-            await _mediator.Send(new RenameFile.Request(_fileCard.Name, newName));
-            CurrentName = newName + Path.GetExtension(_fileCard.Name);
-            return false;
-        }
         catch (Exception ex)
         {
             ErrorMessage.ShowWithMessage(ex.Message);
-            return true;
         }
     }
 
-    private async Task<bool> ChangeDescriptionAsync(string newDescription)
+    private async Task RenameFileAsync(string newName)
     {
-        try
-        {
-            await _mediator.Send(new ChangeFileDescription.Request(CurrentName, newDescription));
-            return false;
-        }
-        catch (Exception ex)
-        {
-            ErrorMessage.ShowWithMessage(ex.Message);
-            return true;
-        }
+        await _mediator.Send(new RenameFile.Request(_fileCard.Name, newName));
+        CurrentName = newName + Path.GetExtension(_fileCard.Name);
+    }
+
+    private async Task ChangeDescriptionAsync(string newDescription)
+    {
+        await _mediator.Send(new ChangeFileDescription.Request(CurrentName, newDescription));
     }
 }
