@@ -93,6 +93,7 @@ partial class FileCardForm
         _deleteCardButton.TabIndex = 6;
         _deleteCardButton.Text = "Удалить карточку";
         _deleteCardButton.UseVisualStyleBackColor = true;
+        _deleteCardButton.Click += DeleteCardButtonClicked;
         // 
         // FileCardForm
         // 

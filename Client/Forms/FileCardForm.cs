@@ -19,6 +19,7 @@ public partial class FileCardForm : Form
     }
     
     public string CurrentName { get; private set; }
+    public bool IsDeleted { get; private set; }
 
     private void FillValues()
     {
@@ -30,7 +31,24 @@ public partial class FileCardForm : Form
 
     private async void DeleteCardButtonClicked(object sender, EventArgs e)
     {
+        var confirmationResult = MessageBox.Show(
+            "Вы уверены, что хотите удалить этот файл?", "Подтвердите действие", MessageBoxButtons.YesNo);
+
+        if (confirmationResult != DialogResult.Yes)
+        {
+            return;
+        }
         
+        try
+        {
+            await _mediator.Send(new DeleteFile.Request(CurrentName));
+            IsDeleted = true;
+            Close();
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage.ShowWithMessage(ex.Message);
+        }
     }
 
     private async void SaveChangesButtonClicked(object sender, EventArgs e)

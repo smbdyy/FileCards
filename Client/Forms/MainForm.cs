@@ -64,6 +64,12 @@ public partial class MainForm : Form
 
             var fileCardForm = new FileCardForm(response.File, _mediator);
             fileCardForm.ShowDialog();
+
+            if (fileCardForm.IsDeleted)
+            {
+                _filesDataGrid.Rows.RemoveAt(e.RowIndex);
+            }
+            
             cell.Value = fileCardForm.CurrentName;
         }
     }
